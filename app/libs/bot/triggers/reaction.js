@@ -38,7 +38,7 @@ module.exports = {
     // Run actions
     this.actions.forEach((action) => {
       // Check for minimum value
-      if (user.reactions < action.trigger) { 
+      if (user.reactions < action.trigger) {
         return logger.verbose(i18n.t('bot.triggers.reaction.count', user.short_name, action.method, user.reactions, action.trigger))
       }
 
