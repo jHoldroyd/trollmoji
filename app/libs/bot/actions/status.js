@@ -11,7 +11,7 @@ const logger = require('../../log')
 const i18n = require('../../locale')
 
 // Updates a users status icon and message
-function changeStatus (severity, user) {
+function changeStatus (action, user) {
   return new Promise((resolve, reject) => {
     // Parse user data
     let emoji = user.profile.status_emoji.replace(/:/g, '')
@@ -26,8 +26,8 @@ function changeStatus (severity, user) {
         status: status
       },
       after: {
-        emoji: (severity >= 1 ? emojis.random() : emoji),
-        status: (severity >= 2 ? words({min: 2, max: 5, join: ' '}) : status)
+        emoji: (action.emoji ? emojis.random() : emoji),
+        status: (action.status ? words({min: 2, max: 5, join: ' '}) : status)
       }
     }
 
@@ -51,7 +51,7 @@ function changeStatus (severity, user) {
           logger.info(i18n.t('bot.actions.status.try_again', user.short_name))
 
           // Try again
-          return changeStatus(severity, user).then((result) => {
+          return changeStatus(action, user).then((result) => {
             return resolve(result)
           }).catch((err) => {
             return reject(err)

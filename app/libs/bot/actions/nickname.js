@@ -14,7 +14,7 @@ const names = Moniker.generator([Moniker.adjective, Moniker.noun], {glue: ' '})
 const regex = /^(.+?) (?:"([a-z- ]+)" )?(.+?)$/i
 
 // Gives the user a new nickname
-module.exports = function (severity, user) {
+module.exports = function (action, user) {
   return new Promise((resolve, reject) => {
     // Variables
     let lastName = user.real_name.replace(regex, '$2')

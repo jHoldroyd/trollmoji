@@ -1,0 +1,15 @@
+{
+	"reaction": [
+		{
+			"method": "nickname",
+			"trigger": 50
+		}
+	],
+	"status": [
+		{
+			"method": "status",
+			"emoji": true,
+			"status": false
+		}
+	]
+}

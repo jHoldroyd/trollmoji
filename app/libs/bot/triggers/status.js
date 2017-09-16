@@ -1,10 +1,16 @@
 'use strict'
 
+// Load requirements
+const path = require('path')
+
 // Load module requirements
 const users = require('../../users')
 const i18n = require('../../locale')
 const utils = require('../../utils')
 const logger = require('../../log')
+
+// Define data direcotry
+const dataDir = path.join(__dirname, '../../../../data/')
 
 // Handle incoming status/profile changes
 module.exports = {
@@ -14,10 +20,8 @@ module.exports = {
     'user_change'
   ],
 
-  // The actions and "severity" to respond with
-  actions: {
-    status: 1 // Level of change, 1 = icon, 2 icon + message
-  },
+  // Load the actions from config
+  actions: require(path.join(dataDir, 'actions')).status,
 
   // Check data for change
   updated: function (id, emoji, status) {
@@ -42,8 +46,8 @@ module.exports = {
       users.users[user.id].ignore = true
 
       // Run actions
-      Object.keys(this.actions).forEach((method) => {
-        actions[method](this.actions[method], user).then((result) => {
+      this.actions.forEach((action) => {
+        require(path.join('../actions/', action.method))(action, user).then((result) => {
           // DEBUG
           logger.info(i18n.t('bot.actions.' + result.type + '.success', result))
 

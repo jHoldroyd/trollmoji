@@ -33,13 +33,12 @@ module.exports = {
 
             // Run validation checks for message group
             if (this.validate[group] && !this.validate[group](message, event)) {
-              logger.verbose(i18n.t('bot.index.bind.skip', message.type))
-              return false
+              return logger.verbose(i18n.t('bot.index.bind.skip', message.type))
             }
 
             // Process message and run applicable actions
             logger.verbose(i18n.t('bot.index.bind.process', message.type, name))
-            return this.triggers[name].process(message, this.actions)
+            return this.triggers[name].process(message)
           })
         })
       })
