@@ -49,6 +49,7 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "dotenv": "^4.0.0",
+    "emoji-regex": "^6.5.1",
     "i18n": "github:linagora/i18n-node",
     "moniker": "^0.1.2",
     "node-emoji": "^1.8.1",

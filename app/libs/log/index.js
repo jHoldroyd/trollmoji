@@ -3,8 +3,10 @@
 // Load requirements
 const winston = require('winston')
 const emoji = require('node-emoji')
+const emojiRegex = require('emoji-regex')
 const path = require('path')
 const fs = require('fs')
+const os = require('os')
 
 // Add rotation to winston logs
 require('winston-daily-rotate-file')
@@ -47,8 +49,24 @@ logger.filters.push((level, msg, meta) => {
 
 // Add emoji formatting support
 logger.filters.push((level, msg, meta) => {
-  msg = emoji.emojify(msg)
-  return msg.replace(/([\uD83C-\uDBFF\uDC00-\uDFFF]+|[\u2700-\u27BF][\uFE0E-\uFE0F]?)/g, '$1 ')
+  // Variables
+  let regex = emojiRegex()
+  let m
+
+  // Keep string name variants on Windows
+  if (os.platform() !== 'win32') {
+    // Turn strings into emojis
+    msg = emoji.emojify(msg)
+
+    // Ensure spacing is maintained
+    while ((m = regex.exec(msg)) !== null) {
+      if (m.index === regex.lastIndex) { regex.lastIndex++ }
+      msg = msg.replace(m[0], m[0] + ' ')
+    }
+  }
+
+  // Send back the string
+  return msg.trim()
 })
 
 // Export for use

@@ -1,7 +1,6 @@
 'use strict'
 
 // Load module requirements
-const emojis = require('../../emojis')
 const users = require('../../users')
 const i18n = require('../../locale')
 const utils = require('../../utils')
