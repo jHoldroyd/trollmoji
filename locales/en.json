@@ -50,13 +50,13 @@
 				"errors": {
 					"invalid_emoji": "{greenBright:Slack} rejected %s - invalidating"
 				},
-				"success": "Changed {yellow:%s's} status to %s {cyan:%s}",
-				"notify": "Changed %s's status from %s to %s %s",
+				"success": "Changed {yellow:{{name}}'s} status to :{{after.emoji}}: {cyan:{{after.status}}}",
+				"notify": "Changed {{name}}'s status from :{{before.emoji}}: to :{{after.emoji}}: {{after.status}}",
 				"try_again": "Repeating attempt to update {yellow:%s's} status"
 			},
 			"nickname": {
-				"success": "Updated {yellow:%s's} nickname to \"{cyan:%s}\"",
-				"notify": "Updated %s's nickname to \"%s\""
+				"success": "Updated {yellow:{{name}}'s} nickname to \"{cyan:{{nickname}}}\"",
+				"notify": "Updated {{name}}'s nickname to \"{{nickname}}\""
 			}
 		}
 	},

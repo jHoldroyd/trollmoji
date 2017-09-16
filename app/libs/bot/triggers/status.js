@@ -44,23 +44,12 @@ module.exports = {
 
       // Run actions
       Object.keys(this.actions).forEach((method) => {
-        actions[method](this.actions[method], user, emoji, status).then((result) => {
+        actions[method](this.actions[method], user).then((result) => {
           // DEBUG
-          logger.info(i18n.t(
-            'bot.actions.' + result.type + '.success',
-            result.name,
-            ':' + result.after.emoji + ':',
-            result.after.status
-          ))
+          logger.info(i18n.t('bot.actions.' + result.type + '.success', result))
 
           // Send notification
-          utils.notify(i18n.t(
-            'bot.actions.' + result.type + '.notify',
-            result.name,
-            emojis.format(result.before.emoji, true),
-            emojis.format(result.after.emoji, true),
-            result.after.status
-          ))
+          utils.notify(i18n.t('bot.actions.' + result.type + '.notify', result))
 
         // Something went wrong
         }).catch((err) => {

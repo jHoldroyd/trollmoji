@@ -39,15 +39,12 @@ module.exports = {
       }
 
       // Run the action
-      actions[method](user).then((result) => {
+      actions[method](this.actions[method], user).then((result) => {
         // DEBUG
-        logger.info(i18n.t('bot.actions.' + result.type + '.success', result.name, result.nickname))
-
-        // Reset reaction counter
-        user.reactions = 0
+        logger.info(i18n.t('bot.actions.' + result.type + '.success', result))
 
         // Send notification
-        utils.notify(i18n.t('bot.actions.' + result.type + '.notify', result.name, result.nickname))
+        utils.notify(i18n.t('bot.actions.' + result.type + '.notify', result))
 
       // Something went wrong
       }).catch((err) => {
