@@ -1,0 +1,63 @@
+{
+  "name": "trollmoji",
+  "version": "0.0.1",
+  "description": "Slack bot for having some fun with your team",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard --fix app/**/*.js",
+    "preversion": "npm run lint",
+    "preversion:readme": "replace '/v\\d+\\.\\d+\\.\\d+' \"/v$npm_package_version\" ./README.md",
+    "version": "npm run preversion:readme && git add -A README.md",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "bin": {
+    "trollmoji": "./index.js"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jHoldroyd/trollmoji.git"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "troll",
+    "emoji"
+  ],
+  "author": "Jamie Holdroyd <jamie@moltin.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jHoldroyd/trollmoji/issues"
+  },
+  "homepage": "https://github.com/jHoldroyd/trollmoji#readme",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "data/",
+    "locales/",
+    "app/"
+  ],
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-run": "^0.8.0",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "dotenv": "^4.0.0",
+    "i18n": "github:linagora/i18n-node",
+    "moniker": "^0.1.2",
+    "node-emoji": "^1.8.1",
+    "pushover-notifications": "^0.2.4",
+    "random-words": "0.0.1",
+    "request": "^2.81.0",
+    "slack": "^8.3.1",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.7.0",
+    "words": "^0.1.3"
+  }
+}
