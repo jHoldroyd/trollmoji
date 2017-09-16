@@ -1,5 +1,8 @@
 'use strict'
 
+// Load requirements
+const emoji = require('node-emoji')
+
 // Create a pushover instance
 const pushover = new (require('pushover-notifications'))({
   user: process.env.PUSHOVER_USER,
@@ -20,7 +23,7 @@ module.exports = function (msg) {
 
   // Send the message
   return pushover.send({
-    message: msg,
+    message: emoji.emojify(msg),
     title: pkg.name,
     sound: 'magic',
     priority: 1
