@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# Misc.
+data/blacklist.json
+data/emoji.json
