@@ -1,0 +1,76 @@
+{
+	"setup": {
+		"status": {
+			"env": "New {cyan:.env} file created, please add your {greenBright:Slack} API key and restart",
+			"blacklist": "Created blank {cyan:blacklist} file",
+			"directory": "Created new {cyan:data} directory",
+			"emoji_download": "Downloading {cyan:emoji data}",
+			"invalid": "Created new {cyan:invalid} emoji file",
+			"emoji_data": "Emoji data downloaded {green:successfully}"
+		}
+	},
+	"emojis": {
+		"load": {
+			"errors": {
+				"slack": "Failed to get emojis from {greenBright:Slack}"
+			}
+		},
+		"invalidate": {
+			"added": "Added {%s} to the invalid list"
+		}
+	},
+	"general": {
+		"status": {
+			"setup": "Setup complete, starting",
+			"emojis": "Loaded {cyan:%s emojis}",
+			"users": "Found {yellow:%s users}",
+			"watching": "Ready & waiting for event triggers"
+		}
+	},
+	"bot": {
+		"index": {
+			"bind": {
+				"event": "Bound {cyan:%s} for {magenta:%s}",
+				"recieved": "Recieved {cyan:%s} event",
+				"skip": "Skipping {cyan:%s}",
+				"process": "Handing {cyan:%s} to {magenta:%s} for processing"
+			}
+		},
+		"triggers": {
+			"status": {
+				"changed": "{yellow:%s} changed their status to %s {cyan:%s}"
+			},
+			"reaction": {
+				"added": "{yellow:%s} added %s as a reaction to {yellow:%s's} status",
+				"count": "Not enough ractions for {yellow:%s} to trigger {cyan:%s} {gray,italic:(%s/%s)}"
+			}
+		},
+		"actions": {
+			"status": {
+				"errors": {
+					"invalid_emoji": "{greenBright:Slack} rejected %s - invalidating"
+				},
+				"success": "Changed {yellow:%s's} status to %s {cyan:%s}",
+				"notify": "Changed %s's status from %s to %s %s",
+				"try_again": "Repeating attempt to update {yellow:%s's} status"
+			},
+			"nickname": {
+				"success": "Updated {yellow:%s's} nickname to \"{cyan:%s}\"",
+				"notify": "Updated %s's nickname to \"%s\""
+			}
+		}
+	},
+	"users": {
+		"add": {
+			"added": "Added user {yellow:@%s}"
+		}
+	},
+	"utils": {
+		"methods": {
+			"notify": {
+				"send": "Sending the following message via {cyan:Pushover}:\n         %s",
+				"error": "Failed to send push notifcation"
+			}
+		}
+	}
+}
